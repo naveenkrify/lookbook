@@ -12,6 +12,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { useState } from "react";
+import { IoAddCircleOutline } from "react-icons/io5";
 
 export default function ArtistBox1({ item, smallRectangle = (f) => f }) {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -100,6 +101,15 @@ export default function ArtistBox1({ item, smallRectangle = (f) => f }) {
           justify="center"
           alignItems="center"
         >
+          <IoAddCircleOutline
+            style={{
+              position: "absolute",
+              zIndex: "2",
+              height: "15%",
+              width: "15%",
+              marginTop: "5%",
+            }}
+          />
           <img
             src={item.default_img}
             style={{ marginTop: "3%" }}

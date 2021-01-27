@@ -152,7 +152,7 @@ export default function ArtistGrid() {
   headers.append("Accept", "application/json");
 
   headers.append("Access-Control-Allow-Origin", "http://localhost:3000");
-
+  headers.append("Access-Control-Allow-Credentials", "true");
   headers.append("GET", "POST", "OPTIONS");
   fetch("https://intranet.maddogcasting.com/app3/sample", {
     method: "GET",
@@ -161,7 +161,8 @@ export default function ArtistGrid() {
     .then((res) => res.json())
     .then((result) => {
       console.log(result);
-    });
+    })
+    .catch((err) => console.log(err));
   return (
     <>
       <TopBar onChangeBox={onChangeBox} />
