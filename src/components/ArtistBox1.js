@@ -143,7 +143,7 @@ export default function ArtistBox1({ item, smallRectangle = (f) => f }) {
                   <ThemeProvider theme={theme}>
                     <Typography variant="p">
                       <Box fontWeight="fontWeightMedium">
-                        Height: {item.Height}
+                        Height: {item.height}
                       </Box>
                     </Typography>
                   </ThemeProvider>
@@ -154,7 +154,7 @@ export default function ArtistBox1({ item, smallRectangle = (f) => f }) {
                   <ThemeProvider theme={theme}>
                     <Typography variant="p">
                       <Box fontWeight="fontWeightMedium">
-                        Collar: {item.Collar}
+                        Collar: {item.collar}
                       </Box>
                     </Typography>
                   </ThemeProvider>
@@ -174,7 +174,7 @@ export default function ArtistBox1({ item, smallRectangle = (f) => f }) {
                   <ThemeProvider theme={theme}>
                     <Typography variant="p">
                       <Box fontWeight="fontWeightMedium">
-                        Waist: {item.Waist}
+                        Waist: {item.waist}
                       </Box>
                     </Typography>
                   </ThemeProvider>
@@ -184,7 +184,7 @@ export default function ArtistBox1({ item, smallRectangle = (f) => f }) {
                 <span>
                   <ThemeProvider theme={theme}>
                     <Typography variant="p">
-                      <Box fontWeight="fontWeightMedium">Hip: {item.Hip}</Box>
+                      <Box fontWeight="fontWeightMedium">Hip: {item.hip}</Box>
                     </Typography>
                   </ThemeProvider>
                 </span>
@@ -194,7 +194,7 @@ export default function ArtistBox1({ item, smallRectangle = (f) => f }) {
                   <ThemeProvider theme={theme}>
                     <Typography variant="p">
                       <Box fontWeight="fontWeightMedium">
-                        Dress: {item.Dress}
+                        Dress: {item.dress_size}
                       </Box>
                     </Typography>
                   </ThemeProvider>
@@ -204,7 +204,7 @@ export default function ArtistBox1({ item, smallRectangle = (f) => f }) {
                 <span>
                   <ThemeProvider theme={theme}>
                     <Typography variant="p">
-                      <Box fontWeight="fontWeightMedium">Shoe: {item.Shoe}</Box>
+                      <Box fontWeight="fontWeightMedium">Shoe: {item.shoe}</Box>
                     </Typography>
                   </ThemeProvider>
                 </span>
@@ -234,7 +234,7 @@ export default function ArtistBox1({ item, smallRectangle = (f) => f }) {
           <span>
             <ThemeProvider theme={theme}>
               <Typography variant="h5">
-                <Box fontWeight="fontWeightMedium">{item.name}</Box>
+                <Box fontWeight="fontWeightMedium">{item.firstname}</Box>
               </Typography>
             </ThemeProvider>
           </span>

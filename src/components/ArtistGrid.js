@@ -141,7 +141,7 @@ export default function ArtistGrid() {
     },
   ];
   theme = responsiveFontSizes(theme);
-  const [Data, setData] = useState(myobj);
+  const [Data, setData] = useState([]);
   const [BoxType, setBoxType] = useState(1);
   const onChangeBox = (b) => {
     setBoxType(parseInt(b));
@@ -160,7 +160,9 @@ export default function ArtistGrid() {
   })
     .then((res) => res.json())
     .then((result) => {
-      console.log(result);
+      console.log(result, "RESULT");
+      // setData(result);
+      setData(myobj);
     })
     .catch((err) => console.log(err));
   return (
