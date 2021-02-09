@@ -18,9 +18,8 @@ export default function ArtistBox1({ item, smallRectangle = (f) => f }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [size, setSize] = useState("100%");
   console.log(item, "ITEM");
-
   const handleClick = (event) => {
-    console.log(event);
+    // console.log(event);
     setAnchorEl(event.currentTarget);
   };
 
@@ -29,7 +28,7 @@ export default function ArtistBox1({ item, smallRectangle = (f) => f }) {
   };
 
   const handleClose2 = (id) => {
-    console.log(id, "ID");
+    // console.log(id, "ID");
     setAnchorEl(null);
     smallRectangle(id);
   };
@@ -101,7 +100,7 @@ export default function ArtistBox1({ item, smallRectangle = (f) => f }) {
           justify="center"
           alignItems="center"
         >
-          <IoAddCircleOutline
+          {/* <IoAddCircleOutline
             style={{
               position: "absolute",
               zIndex: "2",
@@ -109,9 +108,9 @@ export default function ArtistBox1({ item, smallRectangle = (f) => f }) {
               width: "15%",
               marginTop: "5%",
             }}
-          />
+          /> */}
           <img
-            src={item.default_img}
+            src={item.default_image}
             style={{ marginTop: "3%" }}
             height={"93%"}
             width={"93%"}

@@ -75,12 +75,11 @@ export default function ArtistBox8({ item, smallRectangle = (f) => f }) {
             }}
           >
             <img
-              src={item.default_img}
+              src={item.default_image}
               style={{
                 textAlign: "center",
                 height: "93%",
                 width: "93%",
-                border: "1px solid yellow",
               }}
             />
           </Grid>
@@ -94,7 +93,7 @@ export default function ArtistBox8({ item, smallRectangle = (f) => f }) {
             style={{ border: "1px solid pink" }}
           >
             <img
-              src={item.default_img}
+              src={item.default_image}
               style={{
                 textAlign: "center",
                 height: "93%",
@@ -112,9 +111,37 @@ export default function ArtistBox8({ item, smallRectangle = (f) => f }) {
         sm={7}
         xs={7}
         md={7}
-        direction="row"
-        style={{ border: "1px solid red" }}
-      ></Grid>
+        style={{ border: "4px solid black" }}
+      >
+        <Grid item container direction="row" lg={12} sm={12} xs={12} md={12}>
+          <Grid
+            item
+            lg={12}
+            sm={12}
+            xs={12}
+            md={12}
+            style={{ border: "1px solid green", height: "10%" }}
+          >
+            <div>"dkfjghs"</div>
+          </Grid>
+          <Grid
+            item
+            lg={12}
+            sm={12}
+            xs={12}
+            md={12}
+            style={{ border: "1px solid green" }}
+          ></Grid>
+          <Grid
+            item
+            lg={12}
+            sm={12}
+            xs={12}
+            md={12}
+            style={{ border: "1px solid green" }}
+          ></Grid>
+        </Grid>
+      </Grid>
     </Grid>
   );
 }

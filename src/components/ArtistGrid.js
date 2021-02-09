@@ -6,7 +6,7 @@ import {
   ThemeProvider,
 } from "@material-ui/core/styles";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ArtistBox1 from "./ArtistBox1";
 import ArtistBox2 from "./ArtistBox2";
 import ArtistBox3 from "./ArtistBox3";
@@ -154,17 +154,19 @@ export default function ArtistGrid() {
   headers.append("Access-Control-Allow-Origin", "http://localhost:3000");
   headers.append("Access-Control-Allow-Credentials", "true");
   headers.append("GET", "POST", "OPTIONS");
-  fetch("https://intranet.maddogcasting.com/app3/sample", {
-    method: "GET",
-    headers: headers,
-  })
-    .then((res) => res.json())
-    .then((result) => {
-      console.log(result, "RESULT");
-      // setData(result);
-      setData(myobj);
-    })
-    .catch((err) => console.log(err));
+  useEffect(() => {
+    loadData();
+  }, []);
+  const loadData = async () => {
+    const res = await fetch("https://intranet.maddogcasting.com/app3/sample", {
+      method: "GET",
+      headers: headers,
+    });
+    const res_ = await res.json();
+    setData(res_);
+    console.log(res_);
+  };
+  // setData(myobj);
   return (
     <>
       <TopBar onChangeBox={onChangeBox} />
@@ -176,6 +178,8 @@ export default function ArtistGrid() {
         </Grid>
       )}
       {BoxType != 1 && <p>You have selected different {BoxType}</p>} */}
+
+      {/* 6 per page 1 photo each */}
       {BoxType === 1 && (
         <Grid container spacing={3} style={{ textAlign: "center" }}>
           {Data.map((item) => {
@@ -189,6 +193,7 @@ export default function ArtistGrid() {
           })}
         </Grid>
       )}
+      {/* 4 per page 1 photo each */}
       {BoxType === 2 && (
         <Grid container spacing={3}>
           {Data.map((item) => {
@@ -202,6 +207,7 @@ export default function ArtistGrid() {
           })}
         </Grid>
       )}
+      {/* 3 per page 1 photo each */}
       {BoxType === 3 && (
         <Grid container spacing={3}>
           {Data.map((item) => {
