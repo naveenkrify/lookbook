@@ -114,15 +114,16 @@ export default function ArtistBox8({ item, smallRectangle = (f) => f }) {
         style={{ border: "4px solid black" }}
       >
         <Grid item container direction="row" lg={12} sm={12} xs={12} md={12}>
+          {/* Arist name */}
           <Grid
             item
             lg={12}
             sm={12}
             xs={12}
             md={12}
-            style={{ border: "1px solid green", height: "10%" }}
+            style={{ border: "5px solid green",justifyContent:"center",alignItems:"center",display:"flex" }}
           >
-            <div>"dkfjghs"</div>
+            <div style={{}}>{item.firstname +" "+ item.lastname}</div>
           </Grid>
           <Grid
             item
@@ -130,16 +131,110 @@ export default function ArtistBox8({ item, smallRectangle = (f) => f }) {
             sm={12}
             xs={12}
             md={12}
-            style={{ border: "1px solid green" }}
-          ></Grid>
+            style={{ border: "5px solid yellow" }}
+          >
+            {/* Artist details */}
+            <div style={{ height: "100%", width: "100%" }}>
+                <div>
+                  <span>
+                    <ThemeProvider theme={theme}>
+                      <Typography variant="p">
+                        <Box fontWeight="fontWeightMedium">Age: {item.Age}</Box>
+                      </Typography>
+                    </ThemeProvider>
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    <ThemeProvider theme={theme}>
+                      <Typography variant="p">
+                        <Box fontWeight="fontWeightMedium">
+                          Height: {item.height}
+                        </Box>
+                      </Typography>
+                    </ThemeProvider>
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    <ThemeProvider theme={theme}>
+                      <Typography variant="p">
+                        <Box fontWeight="fontWeightMedium">
+                          Collar: {item.collar}
+                        </Box>
+                      </Typography>
+                    </ThemeProvider>
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    <ThemeProvider theme={theme}>
+                      <Typography variant="p">
+                        <Box fontWeight="fontWeightMedium">
+                          Bust: {item.bust}
+                        </Box>
+                      </Typography>
+                    </ThemeProvider>
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    <ThemeProvider theme={theme}>
+                      <Typography variant="p">
+                        <Box fontWeight="fontWeightMedium">
+                          Waist: {item.waist}
+                        </Box>
+                      </Typography>
+                    </ThemeProvider>
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    <ThemeProvider theme={theme}>
+                      <Typography variant="p">
+                        <Box fontWeight="fontWeightMedium">Hip: {item.hip}</Box>
+                      </Typography>
+                    </ThemeProvider>
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    <ThemeProvider theme={theme}>
+                      <Typography variant="p">
+                        <Box fontWeight="fontWeightMedium">
+                          Dress: {item.dress_size}
+                        </Box>
+                      </Typography>
+                    </ThemeProvider>
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    <ThemeProvider theme={theme}>
+                      <Typography variant="p">
+                        <Box fontWeight="fontWeightMedium">
+                          Shoe: {item.shoe}
+                        </Box>
+                      </Typography>
+                    </ThemeProvider>
+                  </span>
+                </div>
+              </div>
+
+          </Grid>
           <Grid
             item
             lg={12}
             sm={12}
             xs={12}
             md={12}
-            style={{ border: "1px solid green" }}
-          ></Grid>
+            style={{ border: "5px solid pink" }}
+          >
+            <textarea
+          placeholder={"notes"}
+          style={{ width: "100%", height: "100%" }}
+        />
+          </Grid>
         </Grid>
       </Grid>
     </Grid>

@@ -15,6 +15,7 @@ import ArtistBox5 from "./ArtistBox5";
 import ArtistBox6 from "./ArtistBox6";
 import ArtistBox7 from "./ArtistBox7";
 import ArtistBox8 from "./ArtistBox8";
+import ArtistBox9 from "./ArtistBox9";
 import TopBar from "./TopBar";
 export default function ArtistGrid() {
   const smallReactangle = (id) => {
@@ -290,6 +291,21 @@ export default function ArtistGrid() {
             );
           })}
         </Grid>
+      )}
+
+      {/* 1 per page 3 photos each */}
+      {BoxType === 9 && (
+        <Grid container spacing={3}>
+        {Data.map((item) => {
+          return (
+            <ArtistBox9
+              item={item}
+              smallRectangle={smallReactangle}
+              box_type={BoxType}
+            />
+          );
+        })}
+      </Grid>
       )}
     </>
   );
