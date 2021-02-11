@@ -48,11 +48,11 @@ export default function TopBar({ onChangeBox = (f) => f }) {
         sm={12}
         xs={12}
         md={12}
-        style={{ border: "1px solid black" }}
+        style={{ border: "1px solid black", marginBottom: "1%" }}
       >
         <Grid item lg={10} sm={10} xs={10} md={10}>
           <IconButton>
-            <BsFillArchiveFill style={{ color: "red" }} />
+            <BsFillArchiveFill style={{ color: "#ff1552" }} />
           </IconButton>
         </Grid>
 

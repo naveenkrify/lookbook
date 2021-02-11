@@ -31,116 +31,7 @@ export default function ArtistGrid() {
     console.log(newData);
   };
   let theme = createMuiTheme();
-  const myobj = [
-    {
-      name: "veeru",
-      id: 1,
-      Age: 25,
-      Height: 6,
-      Collar: 78,
-      Chest: 5,
-      Waist: "red",
-      Hip: "5cm",
-      Dress: "green",
-      Shoe: 3.1,
-      Bust: 3,
-      default_img:
-        "https://d2g0qi9nm3z3ds.cloudfront.net/attachment/8b/97/52/814f57ab440d3ccded2e4dee26_200x200.jpg?Expires=1611745646&Signature=CxGpm1jsfTRLcyh6YZsgiocJprQPpEbUxT6R5nzLESAVurvZp~yGnd93ZSg-hvv~k9hiHJgO11tvewshKI~9LA18oShEmvlR5h5Eu0lQ3rP0BPXO2Qxm5pRGQW4NG84Yo9vB-vVrd4si19PsRBgN10YUDmtRVQ~W8ARgFDJoLOsGJnWCBrcmWFR9EhcEy5-uuDK~MGePYdkv~ou1JukKJ31zW1vvwxU2TnQDKb2~p3XUCH3zcSdW-Tntfp40mz-UXtzgQxtSLMeUKH9zzYBAbPik4xT8wNBYhndQXRyxIg5fvjoi97Q8AvsG9G~mUVpauAlfHhiD1Z9LGgNlg8yyFQ__&Key-Pair-Id=APKAJ753FGHVP7RXE4AQ",
-      size: "100%",
-    },
-    {
-      name: "naveen",
-      id: 2,
-      Age: 55,
-      Height: 6,
-      Collar: 78,
-      Chest: 5,
-      Waist: "red",
-      Hip: "5cm",
-      Dress: "green",
-      Shoe: 3.1,
-      Bust: 4,
-      default_img:
-        "https://www.collinsdictionary.com/images/full/artist_125937788.jpg",
-      size: "100%",
-    },
-    {
-      name: "siva",
-      id: 3,
-      Age: 99,
-      Height: 6,
-      Collar: 78,
-      Bust: 5,
-      Waist: "red",
-      Hip: "5cm",
-      Dress: "green",
-      Shoe: 3.1,
-      default_img:
-        "https://www.collinsdictionary.com/images/full/artist_125937788.jpg",
-      size: "100%",
-    },
-    {
-      name: "sai",
-      id: 4,
-      Age: 8,
-      Height: 6,
-      Collar: 78,
-      Bust: 5,
-      Waist: "red",
-      Hip: "5cm",
-      Dress: "green",
-      Shoe: 3.1,
-      default_img:
-        "https://www.collinsdictionary.com/images/full/artist_125937788.jpg",
-      size: "100%",
-    },
-    {
-      name: "suresh",
-      id: 5,
-      Age: 78,
-      Height: 6,
-      Collar: 78,
-      Chest: 5,
-      Waist: "red",
-      Hip: "5cm",
-      Dress: "green",
-      Shoe: 3.1,
-      Bust: 6,
-      default_img:
-        "https://www.collinsdictionary.com/images/full/artist_125937788.jpg",
-      size: "100%",
-    },
-    {
-      name: "ganesh",
-      id: 6,
-      Age: 54,
-      Height: 6,
-      Collar: 78,
-      Bust: 5,
-      Waist: "red",
-      Hip: "5cm",
-      Dress: "green",
-      Shoe: 3.1,
-      default_img:
-        "https://www.collinsdictionary.com/images/full/artist_125937788.jpg",
-      size: "100%",
-    },
-    {
-      name: "ganesh",
-      id: 6,
-      Age: 54,
-      Height: 6,
-      Collar: 78,
-      Bust: 5,
-      Waist: "red",
-      Hip: "5cm",
-      Dress: "green",
-      Shoe: 3.1,
-      default_img:
-        "https://www.collinsdictionary.com/images/full/artist_125937788.jpg",
-      size: "100%",
-    },
-  ];
+
   theme = responsiveFontSizes(theme);
   const [Data, setData] = useState([]);
   const [BoxType, setBoxType] = useState(1);
@@ -182,7 +73,11 @@ export default function ArtistGrid() {
 
       {/* 6 per page 1 photo each */}
       {BoxType === 1 && (
-        <Grid container spacing={3} style={{ textAlign: "center" }}>
+        <Grid
+          container
+          spacing={3}
+          style={{ textAlign: "center", padding: "0.5%" }}
+        >
           {Data.map((item) => {
             return (
               <ArtistBox1
@@ -296,16 +191,16 @@ export default function ArtistGrid() {
       {/* 1 per page 3 photos each */}
       {BoxType === 9 && (
         <Grid container spacing={3}>
-        {Data.map((item) => {
-          return (
-            <ArtistBox9
-              item={item}
-              smallRectangle={smallReactangle}
-              box_type={BoxType}
-            />
-          );
-        })}
-      </Grid>
+          {Data.map((item) => {
+            return (
+              <ArtistBox9
+                item={item}
+                smallRectangle={smallReactangle}
+                box_type={BoxType}
+              />
+            );
+          })}
+        </Grid>
       )}
     </>
   );

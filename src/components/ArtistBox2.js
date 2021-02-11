@@ -3,6 +3,7 @@ import {
   createMuiTheme,
   responsiveFontSizes,
   ThemeProvider,
+  MuiThemeProvider,
 } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { Box } from "@material-ui/core";
@@ -59,7 +60,15 @@ export default function ArtistBox2({ item, smallRectangle = (f) => f }) {
           md={12}
           style={{ height: "90%" }}
         >
-          <IconButton style={{ position: "absolute", zIndex: "2" }}>
+          <IconButton
+            style={{
+              position: "absolute",
+              zIndex: "2",
+              border: "1px solid green",
+              marginTop: "10px",
+              marginLeft: "30px",
+            }}
+          >
             <IoMdHammer
               aria-controls="simple-menu"
               aria-haspopup="true"
@@ -85,7 +94,7 @@ export default function ArtistBox2({ item, smallRectangle = (f) => f }) {
             <MenuItem onClick={handleClose}>Large Rectangle</MenuItem>
             <MenuItem onClick={handleClose}>Rotate 90degrees</MenuItem>
           </Menu>
-
+          {/* Image Grid */}
           <Grid
             item
             lg={6}
@@ -93,10 +102,9 @@ export default function ArtistBox2({ item, smallRectangle = (f) => f }) {
             xs={6}
             md={6}
             style={{
-              height: item.size,
-              border: "2px solid black",
-              borderRadius: "20px",
+              height: "100%",
               textAlign: "center",
+              border: "1px solid red",
             }}
             spacing={4}
             justify="center"
@@ -104,9 +112,13 @@ export default function ArtistBox2({ item, smallRectangle = (f) => f }) {
           >
             <img
               src={item.default_image}
-              style={{ marginTop: "3%" }}
+              style={{
+                marginTop: "3%",
+                border: "1px solid black",
+                borderRadius: "15px",
+              }}
               height={"93%"}
-              width={"93%"}
+              width={"75%"}
             />
           </Grid>
           <Grid
@@ -125,91 +137,88 @@ export default function ArtistBox2({ item, smallRectangle = (f) => f }) {
               sm={12}
               xs={12}
               md={12}
-              style={{ height: "70%" }}
+              style={{
+                height: "70%",
+                border: "1px solid green",
+                display: "flex",
+              }}
             >
-              <div style={{ height: "100%", width: "100%" }}>
+              <div
+                style={{
+                  border: "1px solid red",
+                  alignSelf: "flex-end",
+                }}
+              >
                 <div>
                   <span>
-                    <ThemeProvider theme={theme}>
+                    <MuiThemeProvider theme={theme}>
                       <Typography variant="p">
-                        <Box fontWeight="fontWeightMedium">Age: {item.Age}</Box>
+                        <Box>Age: {item.Age}</Box>
                       </Typography>
-                    </ThemeProvider>
+                    </MuiThemeProvider>
                   </span>
                 </div>
                 <div>
                   <span>
-                    <ThemeProvider theme={theme}>
+                    <MuiThemeProvider theme={theme}>
                       <Typography variant="p">
-                        <Box fontWeight="fontWeightMedium">
-                          Height: {item.height}
-                        </Box>
+                        <Box>Height: {item.height}</Box>
                       </Typography>
-                    </ThemeProvider>
+                    </MuiThemeProvider>
                   </span>
                 </div>
                 <div>
                   <span>
-                    <ThemeProvider theme={theme}>
+                    <MuiThemeProvider theme={theme}>
                       <Typography variant="p">
-                        <Box fontWeight="fontWeightMedium">
-                          Collar: {item.collar}
-                        </Box>
+                        <Box>Collar: {item.collar}</Box>
                       </Typography>
-                    </ThemeProvider>
+                    </MuiThemeProvider>
                   </span>
                 </div>
                 <div>
                   <span>
-                    <ThemeProvider theme={theme}>
+                    <MuiThemeProvider theme={theme}>
                       <Typography variant="p">
-                        <Box fontWeight="fontWeightMedium">
-                          Bust: {item.Bust}
-                        </Box>
+                        <Box>Bust: {item.Bust}</Box>
                       </Typography>
-                    </ThemeProvider>
+                    </MuiThemeProvider>
                   </span>
                 </div>
                 <div>
                   <span>
-                    <ThemeProvider theme={theme}>
+                    <MuiThemeProvider theme={theme}>
                       <Typography variant="p">
-                        <Box fontWeight="fontWeightMedium">
-                          Waist: {item.waist}
-                        </Box>
+                        <Box>Waist: {item.waist}</Box>
                       </Typography>
-                    </ThemeProvider>
+                    </MuiThemeProvider>
                   </span>
                 </div>
                 <div>
                   <span>
-                    <ThemeProvider theme={theme}>
+                    <MuiThemeProvider theme={theme}>
                       <Typography variant="p">
-                        <Box fontWeight="fontWeightMedium">Hip: {item.hip}</Box>
+                        <Box>Hip: {item.hip}</Box>
                       </Typography>
-                    </ThemeProvider>
+                    </MuiThemeProvider>
                   </span>
                 </div>
                 <div>
                   <span>
-                    <ThemeProvider theme={theme}>
+                    <MuiThemeProvider theme={theme}>
                       <Typography variant="p">
-                        <Box fontWeight="fontWeightMedium">
-                          Dress: {item.dress_size}
-                        </Box>
+                        <Box>Dress: {item.dress_size}</Box>
                       </Typography>
-                    </ThemeProvider>
+                    </MuiThemeProvider>
                   </span>
                 </div>
                 <div>
                   <span>
-                    <ThemeProvider theme={theme}>
+                    <MuiThemeProvider theme={theme}>
                       <Typography variant="p">
-                        <Box fontWeight="fontWeightMedium">
-                          Shoe: {item.shoe}
-                        </Box>
+                        <Box>Shoe: {item.shoe}</Box>
                       </Typography>
-                    </ThemeProvider>
+                    </MuiThemeProvider>
                   </span>
                 </div>
               </div>
@@ -224,7 +233,7 @@ export default function ArtistBox2({ item, smallRectangle = (f) => f }) {
             >
               <textarea
                 placeholder={"notes"}
-                style={{ width: "100%", height: "100%", margin: "1px" }}
+                style={{ width: "70%", height: "93%" }}
               />
             </Grid>
           </Grid>
