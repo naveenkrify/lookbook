@@ -64,9 +64,8 @@ export default function ArtistBox2({ item, smallRectangle = (f) => f }) {
             style={{
               position: "absolute",
               zIndex: "2",
-              border: "1px solid green",
-              marginTop: "10px",
-              marginLeft: "30px",
+              marginTop: "15px",
+              marginLeft: "35px",
             }}
           >
             <IoMdHammer
@@ -104,18 +103,19 @@ export default function ArtistBox2({ item, smallRectangle = (f) => f }) {
             style={{
               height: "100%",
               textAlign: "center",
-              border: "1px solid red",
+
+              display: "flex",
             }}
             spacing={4}
-            justify="center"
-            alignItems="center"
           >
             <img
               src={item.default_image}
               style={{
                 marginTop: "3%",
+                marginLeft: "12%",
                 border: "1px solid black",
                 borderRadius: "15px",
+                alignSelf: "self-end",
               }}
               height={"93%"}
               width={"75%"}
@@ -139,13 +139,12 @@ export default function ArtistBox2({ item, smallRectangle = (f) => f }) {
               md={12}
               style={{
                 height: "70%",
-                border: "1px solid green",
+
                 display: "flex",
               }}
             >
               <div
                 style={{
-                  border: "1px solid red",
                   alignSelf: "flex-end",
                 }}
               >
@@ -245,15 +244,25 @@ export default function ArtistBox2({ item, smallRectangle = (f) => f }) {
           sm={12}
           xs={12}
           md={12}
-          style={{ height: "10%" }}
+          style={{ height: "10%", marginTop: "10px" }}
           justify="center"
           alignItems="center"
         >
-          <div>
+          <div
+            style={{
+              border: "1px solid black",
+              width: "70%",
+              backgroundColor: "#ff1552",
+              borderRadius: "5px",
+              textAlign: "center",
+            }}
+          >
             <span>
               <ThemeProvider theme={theme}>
-                <Typography variant="h5">
-                  <Box fontWeight="fontWeightMedium">{item.firstname}</Box>
+                <Typography variant="body1">
+                  <Box fontWeight="fontWeightMedium" style={{ color: "white" }}>
+                    {item.firstname + " " + item.lastname}
+                  </Box>
                 </Typography>
               </ThemeProvider>
             </span>

@@ -4,6 +4,7 @@ import {
   createMuiTheme,
   responsiveFontSizes,
   ThemeProvider,
+  MuiThemeProvider,
 } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { Box } from "@material-ui/core";
@@ -159,82 +160,119 @@ export default function ArtistBox6({ item, smallRectangle = (f) => f }) {
           textAlign: "center",
         }}
       >
-        <Typography variant="h5">{item.name}</Typography>
+        <div
+          style={{
+            border: "1px solid black",
+            width: "70%",
+            backgroundColor: "#ff1552",
+            borderRadius: "5px",
+            textAlign: "center",
+            alignSelf: "center",
+          }}
+        >
+          <span>
+            <MuiThemeProvider theme={theme}>
+              <Typography variant="body1">
+                <Box fontWeight="fontWeightMedium" style={{ color: "white" }}>
+                  {item.firstname + " " + item.lastname}
+                </Box>
+              </Typography>
+            </MuiThemeProvider>
+          </span>
+        </div>
       </Grid>
-      <Grid item lg={12} sm={12} xs={12} md={12} style={{ height: "30%" }}>
-        <div style={{ height: "100%", width: "100%" }}>
+      <Grid
+        item
+        lg={12}
+        sm={12}
+        xs={12}
+        md={12}
+        style={{ height: "30%", display: "flex" }}
+      >
+        <div
+          style={{
+            border: "1px solid black",
+            marginLeft: "10%",
+          }}
+        >
           <div>
             <span>
-              <ThemeProvider theme={theme}>
+              <MuiThemeProvider theme={theme}>
                 <Typography variant="p">
-                  <Box fontWeight="fontWeightMedium">Age: {item.Age}</Box>
+                  <Box>Age: {item.Age}</Box>
                 </Typography>
-              </ThemeProvider>
+              </MuiThemeProvider>
             </span>
           </div>
           <div>
             <span>
-              <ThemeProvider theme={theme}>
+              <MuiThemeProvider theme={theme}>
                 <Typography variant="p">
-                  <Box fontWeight="fontWeightMedium">Height: {item.height}</Box>
+                  <Box>Height: {item.height}</Box>
                 </Typography>
-              </ThemeProvider>
+              </MuiThemeProvider>
             </span>
           </div>
           <div>
             <span>
-              <ThemeProvider theme={theme}>
+              <MuiThemeProvider theme={theme}>
                 <Typography variant="p">
-                  <Box fontWeight="fontWeightMedium">Collar: {item.collar}</Box>
+                  <Box>Collar: {item.collar}</Box>
                 </Typography>
-              </ThemeProvider>
+              </MuiThemeProvider>
             </span>
           </div>
           <div>
             <span>
-              <ThemeProvider theme={theme}>
+              <MuiThemeProvider theme={theme}>
                 <Typography variant="p">
-                  <Box fontWeight="fontWeightMedium">Bust: {item.bust}</Box>
+                  <Box>Bust: {item.bust}</Box>
                 </Typography>
-              </ThemeProvider>
+              </MuiThemeProvider>
+            </span>
+          </div>
+        </div>
+        {/* 2nd Grid */}
+        <div
+          style={{
+            border: "1px solid black",
+            marginLeft: "10%",
+          }}
+        >
+          <div>
+            <span>
+              <MuiThemeProvider theme={theme}>
+                <Typography variant="p">
+                  <Box>Waist: {item.waist}</Box>
+                </Typography>
+              </MuiThemeProvider>
             </span>
           </div>
           <div>
             <span>
-              <ThemeProvider theme={theme}>
+              <MuiThemeProvider theme={theme}>
                 <Typography variant="p">
-                  <Box fontWeight="fontWeightMedium">Waist: {item.waist}</Box>
+                  <Box>Hip: {item.hip}</Box>
                 </Typography>
-              </ThemeProvider>
+              </MuiThemeProvider>
             </span>
           </div>
           <div>
             <span>
-              <ThemeProvider theme={theme}>
+              <MuiThemeProvider theme={theme}>
                 <Typography variant="p">
-                  <Box fontWeight="fontWeightMedium">Hip: {item.hip}</Box>
+                  <Box>Dress: {item.dress_size}</Box>
                 </Typography>
-              </ThemeProvider>
+              </MuiThemeProvider>
             </span>
           </div>
           <div>
             <span>
-              <ThemeProvider theme={theme}>
+              <MuiThemeProvider theme={theme}>
                 <Typography variant="p">
-                  <Box fontWeight="fontWeightMedium">
-                    Dress: {item.dress_size}
-                  </Box>
+                  <Box>Shoe: {item.shoe}</Box>
                 </Typography>
-              </ThemeProvider>
-            </span>
-          </div>
-          <div>
-            <span>
-              <ThemeProvider theme={theme}>
-                <Typography variant="p">
-                  <Box fontWeight="fontWeightMedium">Shoe: {item.shoe}</Box>
-                </Typography>
-              </ThemeProvider>
+              </MuiThemeProvider>
             </span>
           </div>
         </div>
@@ -254,7 +292,7 @@ export default function ArtistBox6({ item, smallRectangle = (f) => f }) {
       >
         <textarea
           placeholder={"notes"}
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "70%", height: "100%" }}
         />
       </Grid>
     </Grid>
