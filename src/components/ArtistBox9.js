@@ -4,6 +4,7 @@ import {
   createMuiTheme,
   responsiveFontSizes,
   ThemeProvider,
+  MuiThemeProvider,
 } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { Box } from "@material-ui/core";
@@ -44,18 +45,9 @@ export default function ArtistBox9({ item, smallRectangle = (f) => f }) {
       direction="row"
       style={{
         height: "600px",
-        border: "2px solid black",
       }}
     >
-      <Grid
-        item
-        container
-        lg={1}
-        sm={1}
-        xs={1}
-        md={1}
-        style={{ border: "2px solid green" }}
-      ></Grid>
+      <Grid item container lg={1} sm={1} xs={1} md={1}></Grid>
       <Grid
         item
         container
@@ -63,10 +55,9 @@ export default function ArtistBox9({ item, smallRectangle = (f) => f }) {
         sm={10}
         xs={10}
         md={10}
-        direction="row"
         style={{
-          border: "2px solid green",
           display: "grid",
+          height: "100%",
           gridTemplateRows: "60% 8% 32%",
         }}
       >
@@ -78,7 +69,8 @@ export default function ArtistBox9({ item, smallRectangle = (f) => f }) {
           sm={12}
           xs={12}
           md={12}
-          style={{ border: "2px solid blue" }}
+          direction="row"
+          style={{ height: "100%" }}
         >
           <Grid
             item
@@ -88,23 +80,22 @@ export default function ArtistBox9({ item, smallRectangle = (f) => f }) {
             xs={4}
             md={4}
             style={{
-              border: "2px solid pink",
+              height: "100%",
               textAlign: "center",
               justifyContent: "center",
             }}
           >
             {/* Image 1 */}
-            <Grid item style={{ border: "2px solid red" }}>
-              <img
-                src={item.default_image}
-                style={{
-                  border: "2px solid black",
-                  borderRadius: "15px",
-                  height: "93%",
-                  width: "93%",
-                }}
-              />
-            </Grid>
+
+            <img
+              src={item.default_image}
+              style={{
+                border: "2px solid black",
+                borderRadius: "15px",
+                height: "93%",
+                width: "73%",
+              }}
+            />
           </Grid>
           <Grid
             item
@@ -114,23 +105,21 @@ export default function ArtistBox9({ item, smallRectangle = (f) => f }) {
             xs={4}
             md={4}
             style={{
-              border: "2px solid pink",
               textAlign: "center",
               justifyContent: "center",
+              height: "100%",
             }}
           >
             {/* Image 2 */}
-            <Grid item style={{ border: "2px solid red" }}>
-              <img
-                src={item.default_image}
-                style={{
-                  border: "2px solid black",
-                  borderRadius: "15px",
-                  height: "93%",
-                  width: "93%",
-                }}
-              />
-            </Grid>
+            <img
+              src={item.default_image}
+              style={{
+                border: "2px solid black",
+                borderRadius: "15px",
+                height: "93%",
+                width: "73%",
+              }}
+            />
           </Grid>
           <Grid
             item
@@ -140,164 +129,137 @@ export default function ArtistBox9({ item, smallRectangle = (f) => f }) {
             xs={4}
             md={4}
             style={{
-              border: "2px solid pink",
               textAlign: "center",
               justifyContent: "center",
+              height: "100%",
             }}
           >
             {/* Image 3 */}
-            <Grid item style={{ border: "2px solid red" }}>
-              <img
-                src={item.default_image}
-                style={{
-                  border: "2px solid black",
-                  borderRadius: "15px",
-                  height: "93%",
-                  width: "93%",
-                }}
-              />
-            </Grid>
+            <img
+              src={item.default_image}
+              style={{
+                border: "2px solid black",
+                borderRadius: "15px",
+                height: "93%",
+                width: "73%",
+              }}
+            />
           </Grid>
         </Grid>
         {/* Name Grid */}
-        <Grid
-          item
-          container
-          lg={12}
-          sm={12}
-          xs={12}
-          md={12}
-          style={{ border: "2px solid blue" }}
-        >
-          {item.firstname + " " + item.lastname}
+        <Grid item container lg={12} sm={12} xs={12} md={12}>
+          <div
+            style={{
+              border: "1px solid black",
+              width: "70%",
+              height: "70%",
+              backgroundColor: "#ff1552",
+              borderRadius: "5px",
+              textAlign: "center",
+              alignSelf: "center",
+              marginLeft: "14%",
+            }}
+          >
+            <span>
+              <ThemeProvider theme={theme}>
+                <Typography variant="body1">
+                  <Box fontWeight="fontWeightMedium" style={{ color: "white" }}>
+                    {item.firstname + " " + item.lastname}
+                  </Box>
+                </Typography>
+              </ThemeProvider>
+            </span>
+          </div>
         </Grid>
         {/* Details and Notes */}
-        <Grid
-          item
-          container
-          lg={12}
-          sm={12}
-          xs={12}
-          md={12}
-          style={{ border: "2px solid blue" }}
-        >
+        <Grid item container lg={12} sm={12} xs={12} md={12}>
           {/* Details Grid */}
-          <Grid
-            item
-            lg={7}
-            sm={7}
-            xs={7}
-            md={7}
-            style={{ border: "2px solid red" }}
-          >
-            <div style={{ height: "100%", width: "100%" }}>
+          <Grid item lg={7} sm={7} xs={7} md={7}>
+            <div style={{ height: "100%", width: "100%", marginLeft: "10%" }}>
               <div>
                 <span>
-                  <ThemeProvider theme={theme}>
+                  <MuiThemeProvider theme={theme}>
                     <Typography variant="p">
-                      <Box fontWeight="fontWeightMedium">Age: {item.Age}</Box>
+                      <Box>Age: {item.Age}</Box>
                     </Typography>
-                  </ThemeProvider>
+                  </MuiThemeProvider>
                 </span>
               </div>
               <div>
                 <span>
-                  <ThemeProvider theme={theme}>
+                  <MuiThemeProvider theme={theme}>
                     <Typography variant="p">
-                      <Box fontWeight="fontWeightMedium">
-                        Height: {item.height}
-                      </Box>
+                      <Box>Height: {item.height}</Box>
                     </Typography>
-                  </ThemeProvider>
+                  </MuiThemeProvider>
                 </span>
               </div>
               <div>
                 <span>
-                  <ThemeProvider theme={theme}>
+                  <MuiThemeProvider theme={theme}>
                     <Typography variant="p">
-                      <Box fontWeight="fontWeightMedium">
-                        Collar: {item.collar}
-                      </Box>
+                      <Box>Collar: {item.collar}</Box>
                     </Typography>
-                  </ThemeProvider>
+                  </MuiThemeProvider>
                 </span>
               </div>
               <div>
                 <span>
-                  <ThemeProvider theme={theme}>
+                  <MuiThemeProvider theme={theme}>
                     <Typography variant="p">
-                      <Box fontWeight="fontWeightMedium">Bust: {item.bust}</Box>
+                      <Box>Bust: {item.bust}</Box>
                     </Typography>
-                  </ThemeProvider>
+                  </MuiThemeProvider>
                 </span>
               </div>
               <div>
                 <span>
-                  <ThemeProvider theme={theme}>
+                  <MuiThemeProvider theme={theme}>
                     <Typography variant="p">
-                      <Box fontWeight="fontWeightMedium">
-                        Waist: {item.waist}
-                      </Box>
+                      <Box>Waist: {item.waist}</Box>
                     </Typography>
-                  </ThemeProvider>
+                  </MuiThemeProvider>
                 </span>
               </div>
               <div>
                 <span>
-                  <ThemeProvider theme={theme}>
+                  <MuiThemeProvider theme={theme}>
                     <Typography variant="p">
-                      <Box fontWeight="fontWeightMedium">Hip: {item.hip}</Box>
+                      <Box>Hip: {item.hip}</Box>
                     </Typography>
-                  </ThemeProvider>
+                  </MuiThemeProvider>
                 </span>
               </div>
               <div>
                 <span>
-                  <ThemeProvider theme={theme}>
+                  <MuiThemeProvider theme={theme}>
                     <Typography variant="p">
-                      <Box fontWeight="fontWeightMedium">
-                        Dress: {item.dress_size}
-                      </Box>
+                      <Box>Dress: {item.dress_size}</Box>
                     </Typography>
-                  </ThemeProvider>
+                  </MuiThemeProvider>
                 </span>
               </div>
               <div>
                 <span>
-                  <ThemeProvider theme={theme}>
+                  <MuiThemeProvider theme={theme}>
                     <Typography variant="p">
-                      <Box fontWeight="fontWeightMedium">Shoe: {item.shoe}</Box>
+                      <Box>Shoe: {item.shoe}</Box>
                     </Typography>
-                  </ThemeProvider>
+                  </MuiThemeProvider>
                 </span>
               </div>
             </div>
           </Grid>
           {/* Notes Grid */}
-          <Grid
-            item
-            lg={5}
-            sm={5}
-            xs={5}
-            md={5}
-            style={{ border: "2px solid red" }}
-          >
+          <Grid item lg={5} sm={5} xs={5} md={5}>
             <textarea
               placeholder={"notes"}
-              style={{ width: "100%", height: "100%" }}
+              style={{ width: "80%", height: "80%" }}
             />
           </Grid>
         </Grid>
       </Grid>
-      <Grid
-        item
-        container
-        lg={1}
-        sm={1}
-        xs={1}
-        md={1}
-        style={{ border: "2px solid green" }}
-      ></Grid>
+      <Grid item container lg={1} sm={1} xs={1} md={1}></Grid>
     </Grid>
   );
 }

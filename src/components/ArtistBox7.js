@@ -4,6 +4,7 @@ import {
   createMuiTheme,
   responsiveFontSizes,
   ThemeProvider,
+  MuiThemeProvider,
 } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { Box } from "@material-ui/core";
@@ -47,8 +48,7 @@ export default function ArtistBox7({ item, smallRectangle = (f) => f }) {
       xs={12}
       md={12}
       style={{
-        height: "600px",
-        border: "2px solid black",
+        height: "450px",
       }}
     >
       <Grid
@@ -58,17 +58,17 @@ export default function ArtistBox7({ item, smallRectangle = (f) => f }) {
         xs={4}
         md={4}
         style={{
-          border: "2px solid green",
           textAlign: "center",
           justifyContent: "center",
+          height: "100%",
         }}
       >
         <img
           src={item.default_image}
           height={"93%"}
-          width={"93%"}
+          width={"80%"}
           style={{
-            border: "2px solid black",
+            border: "1px solid black",
             borderRadius: "15px",
           }}
         />
@@ -82,108 +82,144 @@ export default function ArtistBox7({ item, smallRectangle = (f) => f }) {
           sm={12}
           xs={12}
           md={12}
-          direction="column"
-          style={{ border: "2px solid green" }}
+          direction="row"
+          style={{
+            display: "grid",
+            gridTemplateRows: "10% 50% 40%",
+          }}
         >
-          <Grid item style={{ border: "2px solid red", textAlign: "center" }}>
-            <Typography variant="h5">{item.firstname}</Typography>
-          </Grid>
-          <Grid item>
-            <Grid
-              item
-              lg={10}
-              sm={10}
-              xs={10}
-              md={10}
-              style={{ border: "1px solid black" }}
+          <Grid
+            item
+            lg={12}
+            sm={12}
+            xs={12}
+            md={12}
+            style={{
+              textAlign: "center",
+              display: "grid",
+              alignItems: "end",
+            }}
+          >
+            <div
+              style={{
+                border: "1px solid black",
+                width: "70%",
+                backgroundColor: "#ff1552",
+                borderRadius: "5px",
+              }}
             >
-              <div style={{ height: "100%", width: "100%" }}>
-                <div>
-                  <span>
-                    <ThemeProvider theme={theme}>
-                      <Typography variant="p">
-                        <Box fontWeight="fontWeightMedium">Age: {item.Age}</Box>
-                      </Typography>
-                    </ThemeProvider>
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    <ThemeProvider theme={theme}>
-                      <Typography variant="p">
-                        <Box fontWeight="fontWeightMedium">
-                          Height: {item.height}
-                        </Box>
-                      </Typography>
-                    </ThemeProvider>
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    <ThemeProvider theme={theme}>
-                      <Typography variant="p">
-                        <Box fontWeight="fontWeightMedium">
-                          Collar: {item.collar}
-                        </Box>
-                      </Typography>
-                    </ThemeProvider>
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    <ThemeProvider theme={theme}>
-                      <Typography variant="p">
-                        <Box fontWeight="fontWeightMedium">
-                          Bust: {item.bust}
-                        </Box>
-                      </Typography>
-                    </ThemeProvider>
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    <ThemeProvider theme={theme}>
-                      <Typography variant="p">
-                        <Box fontWeight="fontWeightMedium">
-                          Waist: {item.waist}
-                        </Box>
-                      </Typography>
-                    </ThemeProvider>
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    <ThemeProvider theme={theme}>
-                      <Typography variant="p">
-                        <Box fontWeight="fontWeightMedium">Hip: {item.hip}</Box>
-                      </Typography>
-                    </ThemeProvider>
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    <ThemeProvider theme={theme}>
-                      <Typography variant="p">
-                        <Box fontWeight="fontWeightMedium">
-                          Dress: {item.dress_size}
-                        </Box>
-                      </Typography>
-                    </ThemeProvider>
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    <ThemeProvider theme={theme}>
-                      <Typography variant="p">
-                        <Box fontWeight="fontWeightMedium">
-                          Shoe: {item.shoe}
-                        </Box>
-                      </Typography>
-                    </ThemeProvider>
-                  </span>
-                </div>
+              <span>
+                <ThemeProvider theme={theme}>
+                  <Typography variant="body1">
+                    <Box
+                      fontWeight="fontWeightMedium"
+                      style={{ color: "white" }}
+                    >
+                      {item.firstname + " " + item.lastname}
+                    </Box>
+                  </Typography>
+                </ThemeProvider>
+              </span>
+            </div>
+          </Grid>
+
+          <Grid
+            item
+            container
+            lg={12}
+            sm={12}
+            xs={12}
+            md={12}
+            style={{ width: "70%" }}
+          >
+            <div
+              style={{
+                height: "100%",
+                width: "100%",
+                marginLeft: "1%",
+                padding: "1%",
+              }}
+            >
+              <div>
+                <span>
+                  <MuiThemeProvider theme={theme}>
+                    <Typography variant="p">
+                      <Box>Age: {item.Age}</Box>
+                    </Typography>
+                  </MuiThemeProvider>
+                </span>
               </div>
-            </Grid>
+              <div>
+                <span>
+                  <MuiThemeProvider theme={theme}>
+                    <Typography variant="p">
+                      <Box>Height: {item.height}</Box>
+                    </Typography>
+                  </MuiThemeProvider>
+                </span>
+              </div>
+              <div>
+                <span>
+                  <MuiThemeProvider theme={theme}>
+                    <Typography variant="p">
+                      <Box>Collar: {item.collar}</Box>
+                    </Typography>
+                  </MuiThemeProvider>
+                </span>
+              </div>
+              <div>
+                <span>
+                  <MuiThemeProvider theme={theme}>
+                    <Typography variant="p">
+                      <Box>Bust: {item.bust}</Box>
+                    </Typography>
+                  </MuiThemeProvider>
+                </span>
+              </div>
+              <div>
+                <span>
+                  <MuiThemeProvider theme={theme}>
+                    <Typography variant="p">
+                      <Box>Waist: {item.waist}</Box>
+                    </Typography>
+                  </MuiThemeProvider>
+                </span>
+              </div>
+              <div>
+                <span>
+                  <MuiThemeProvider theme={theme}>
+                    <Typography variant="p">
+                      <Box>Hip: {item.hip}</Box>
+                    </Typography>
+                  </MuiThemeProvider>
+                </span>
+              </div>
+              <div>
+                <span>
+                  <MuiThemeProvider theme={theme}>
+                    <Typography variant="p">
+                      <Box>Dress: {item.dress_size}</Box>
+                    </Typography>
+                  </MuiThemeProvider>
+                </span>
+              </div>
+              <div>
+                <span>
+                  <MuiThemeProvider theme={theme}>
+                    <Typography variant="p">
+                      <Box>Shoe: {item.shoe}</Box>
+                    </Typography>
+                  </MuiThemeProvider>
+                </span>
+              </div>
+            </div>
+          </Grid>
+          {/* Notes Grid */}
+          <Grid item lg={12} sm={12} xs={12} md={12}>
+            <textarea
+              placeholder={"notes"}
+              style={{ width: "70%", height: "80%" }}
+            />
           </Grid>
         </Grid>
       </Grid>

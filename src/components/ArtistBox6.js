@@ -47,7 +47,7 @@ export default function ArtistBox6({ item, smallRectangle = (f) => f }) {
       sm={6}
       xs={6}
       md={6}
-      style={{ height: "600px", border: "2px solid black" }}
+      style={{ height: "600px" }}
     >
       <Grid
         item
@@ -58,7 +58,7 @@ export default function ArtistBox6({ item, smallRectangle = (f) => f }) {
         md={6}
         style={{
           height: "50%",
-          border: "1px solid green",
+
           textAlign: "center",
         }}
       >
@@ -107,7 +107,7 @@ export default function ArtistBox6({ item, smallRectangle = (f) => f }) {
         md={6}
         style={{
           height: "50%",
-          border: "1px solid green",
+
           textAlign: "center",
         }}
       >
@@ -156,7 +156,7 @@ export default function ArtistBox6({ item, smallRectangle = (f) => f }) {
         md={12}
         style={{
           height: "7%",
-          border: "1px solid green",
+
           textAlign: "center",
         }}
       >
@@ -187,12 +187,15 @@ export default function ArtistBox6({ item, smallRectangle = (f) => f }) {
         sm={12}
         xs={12}
         md={12}
-        style={{ height: "30%", display: "flex" }}
+        style={{
+          display: "flex",
+
+          alignItems: "start",
+        }}
       >
         <div
           style={{
-            border: "1px solid black",
-            marginLeft: "10%",
+            marginLeft: "20%",
           }}
         >
           <div>
@@ -235,8 +238,7 @@ export default function ArtistBox6({ item, smallRectangle = (f) => f }) {
         {/* 2nd Grid */}
         <div
           style={{
-            border: "1px solid black",
-            marginLeft: "10%",
+            marginLeft: "20%",
           }}
         >
           <div>
@@ -287,12 +289,11 @@ export default function ArtistBox6({ item, smallRectangle = (f) => f }) {
         md={12}
         style={{
           height: "10%",
-          border: "1px solid green",
         }}
       >
         <textarea
           placeholder={"notes"}
-          style={{ width: "70%", height: "100%" }}
+          style={{ width: "60%", height: "100%", marginLeft: "20%" }}
         />
       </Grid>
     </Grid>

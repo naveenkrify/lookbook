@@ -14,7 +14,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { useState } from "react";
 
-export default function ArtistBox8({ item, smallRectangle = (f) => f }) {
+export default function ArtistBox10({ item, smallRectangle = (f) => f }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [size, setSize] = useState("100%");
   console.log(item, "ITEM");
@@ -43,103 +43,163 @@ export default function ArtistBox8({ item, smallRectangle = (f) => f }) {
       item
       container
       direction="row"
-      lg={12}
-      sm={12}
-      xs={12}
-      md={12}
       style={{
-        height: "450px",
+        height: "600px",
       }}
     >
-      <Grid item container lg={5} sm={5} xs={5} md={5} style={{}}>
-        <Grid item container lg={12} sm={12} xs={12} md={12}>
-          <Grid
-            item
-            container
-            lg={6}
-            sm={6}
-            xs={6}
-            md={6}
-            style={{
-              textAlign: "center",
-
-              justifyItems: "center",
-            }}
-          >
-            <img
-              src={item.default_image}
-              style={{
-                textAlign: "center",
-                height: "93%",
-                width: "93%",
-                border: "1px solid black",
-                borderRadius: "15px",
-              }}
-            />
-          </Grid>
-          <Grid item container lg={6} sm={6} xs={6} md={6} style={{}}>
-            <img
-              src={item.default_image}
-              style={{
-                textAlign: "center",
-                height: "93%",
-                width: "93%",
-                border: "1px solid black",
-                borderRadius: "15px",
-              }}
-            />
-          </Grid>
-        </Grid>
-      </Grid>
-      <Grid item container lg={7} sm={7} xs={7} md={7} style={{}}>
+      <Grid item container lg={1} sm={1} xs={1} md={1}></Grid>
+      <Grid
+        item
+        container
+        lg={10}
+        sm={10}
+        xs={10}
+        md={10}
+        style={{
+          display: "grid",
+          height: "100%",
+          gridTemplateRows: "60% 8% 32%",
+        }}
+      >
+        {/* Images grid */}
         <Grid
           item
           container
-          direction="row"
           lg={12}
           sm={12}
           xs={12}
           md={12}
-          style={{ display: "grid", gridTemplateRows: "15% 40% 40%" }}
+          direction="row"
+          style={{ height: "100%" }}
         >
-          {/* Arist name */}
           <Grid
             item
-            lg={12}
-            sm={12}
-            xs={12}
-            md={12}
+            container
+            lg={3}
+            sm={3}
+            xs={3}
+            md={3}
             style={{
-              display: "grid",
-              alignItems: "end",
+              height: "100%",
+              textAlign: "center",
+              justifyContent: "center",
             }}
           >
-            <div
+            {/* Image 1 */}
+
+            <img
+              src={item.default_image}
               style={{
-                border: "1px solid black",
-                width: "70%",
-                backgroundColor: "#ff1552",
-                borderRadius: "5px",
-                textAlign: "center",
+                border: "2px solid black",
+                borderRadius: "15px",
+                height: "93%",
+                width: "73%",
               }}
-            >
-              <span>
-                <ThemeProvider theme={theme}>
-                  <Typography variant="body1">
-                    <Box
-                      fontWeight="fontWeightMedium"
-                      style={{ color: "white" }}
-                    >
-                      {item.firstname + " " + item.lastname}
-                    </Box>
-                  </Typography>
-                </ThemeProvider>
-              </span>
-            </div>
+            />
           </Grid>
-          <Grid item lg={12} sm={12} xs={12} md={12} style={{}}>
-            {/* Artist details */}
-            <div style={{ height: "100%", width: "100%" }}>
+          <Grid
+            item
+            container
+            lg={3}
+            sm={3}
+            xs={3}
+            md={3}
+            style={{
+              textAlign: "center",
+              justifyContent: "center",
+              height: "100%",
+            }}
+          >
+            {/* Image 2 */}
+            <img
+              src={item.default_image}
+              style={{
+                border: "2px solid black",
+                borderRadius: "15px",
+                height: "93%",
+                width: "73%",
+              }}
+            />
+          </Grid>
+          <Grid
+            item
+            container
+            lg={3}
+            sm={3}
+            xs={3}
+            md={3}
+            style={{
+              textAlign: "center",
+              justifyContent: "center",
+              height: "100%",
+            }}
+          >
+            {/* Image 3 */}
+            <img
+              src={item.default_image}
+              style={{
+                border: "2px solid black",
+                borderRadius: "15px",
+                height: "93%",
+                width: "73%",
+              }}
+            />
+          </Grid>
+          <Grid
+            item
+            container
+            lg={3}
+            sm={3}
+            xs={3}
+            md={3}
+            style={{
+              textAlign: "center",
+              justifyContent: "center",
+              height: "100%",
+            }}
+          >
+            {/* Image 3 */}
+            <img
+              src={item.default_image}
+              style={{
+                border: "2px solid black",
+                borderRadius: "15px",
+                height: "93%",
+                width: "73%",
+              }}
+            />
+          </Grid>
+        </Grid>
+        {/* Name Grid */}
+        <Grid item container lg={12} sm={12} xs={12} md={12}>
+          <div
+            style={{
+              border: "1px solid black",
+              width: "70%",
+              height: "70%",
+              backgroundColor: "#ff1552",
+              borderRadius: "5px",
+              textAlign: "center",
+              alignSelf: "center",
+              marginLeft: "14%",
+            }}
+          >
+            <span>
+              <ThemeProvider theme={theme}>
+                <Typography variant="body1">
+                  <Box fontWeight="fontWeightMedium" style={{ color: "white" }}>
+                    {item.firstname + " " + item.lastname}
+                  </Box>
+                </Typography>
+              </ThemeProvider>
+            </span>
+          </div>
+        </Grid>
+        {/* Details and Notes */}
+        <Grid item container lg={12} sm={12} xs={12} md={12}>
+          {/* Details Grid */}
+          <Grid item lg={7} sm={7} xs={7} md={7}>
+            <div style={{ height: "100%", width: "100%", marginLeft: "10%" }}>
               <div>
                 <span>
                   <MuiThemeProvider theme={theme}>
@@ -214,14 +274,16 @@ export default function ArtistBox8({ item, smallRectangle = (f) => f }) {
               </div>
             </div>
           </Grid>
-          <Grid item lg={12} sm={12} xs={12} md={12} style={{}}>
+          {/* Notes Grid */}
+          <Grid item lg={5} sm={5} xs={5} md={5}>
             <textarea
               placeholder={"notes"}
-              style={{ width: "70%", height: "90%" }}
+              style={{ width: "80%", height: "80%" }}
             />
           </Grid>
         </Grid>
       </Grid>
+      <Grid item container lg={1} sm={1} xs={1} md={1}></Grid>
     </Grid>
   );
 }
