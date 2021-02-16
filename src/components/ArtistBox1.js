@@ -15,7 +15,11 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { useState } from "react";
 import { IoAddCircleOutline } from "react-icons/io5";
 
-export default function ArtistBox1({ item, smallRectangle = (f) => f }) {
+export default function ArtistBox1({
+  item,
+  smallRectangle = (f) => f,
+  modalOpen = (f) => f,
+}) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [size, setSize] = useState("100%");
   console.log(item, "ITEM");
@@ -32,6 +36,10 @@ export default function ArtistBox1({ item, smallRectangle = (f) => f }) {
     // console.log(id, "ID");
     setAnchorEl(null);
     smallRectangle(id);
+  };
+  const handleClose3 = (id) => {
+    setAnchorEl(null);
+    modalOpen(id);
   };
 
   //////////////////////////////END/////////////////////////////////////////
@@ -84,7 +92,13 @@ export default function ArtistBox1({ item, smallRectangle = (f) => f }) {
           onClose={handleClose}
         >
           <MenuItem onClick={handleClose}>Small Square</MenuItem>
-          <MenuItem onClick={handleClose}>Large Square</MenuItem>
+          <MenuItem
+            onClick={() => {
+              return handleClose3(item.id);
+            }}
+          >
+            Large Square
+          </MenuItem>
           <MenuItem
             onClick={() => {
               return handleClose2(item.id);

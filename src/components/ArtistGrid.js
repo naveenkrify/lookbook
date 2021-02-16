@@ -1,5 +1,7 @@
 import Grid from "@material-ui/core/Grid";
 import { DriveEtaTwoTone } from "@material-ui/icons";
+import Modal from "@material-ui/core/Modal";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   createMuiTheme,
   responsiveFontSizes,
@@ -18,7 +20,65 @@ import ArtistBox8 from "./ArtistBox8";
 import ArtistBox9 from "./ArtistBox9";
 import ArtistBox10 from "./ArtistBox10";
 import TopBar from "./TopBar";
+import MyEditor from "./ImageCrop.js";
+import React from "react";
+
+function rand() {
+  return Math.round(Math.random() * 20) - 10;
+}
+
+function getModalStyle() {
+  const top = 50 + rand();
+  const left = 50 + rand();
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
+
 export default function ArtistGrid() {
+  // Image editor Modal Hooks
+  const [modalStyle] = React.useState(getModalStyle); //Modal style hook
+  const [open, setOpen] = React.useState(false); //Modal state open or close
+
+  // Modal styles
+  const useStyles = makeStyles((theme) => ({
+    paper: {
+      position: "absolute",
+      width: 400,
+      backgroundColor: theme.palette.background.paper,
+      border: "2px solid #000",
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3),
+    },
+  }));
+  const classes = useStyles();
+
+  //Modal Body
+  const body = (
+    <div style={modalStyle} className={classes.paper}>
+      <h2 id="simple-modal-title">Text in a modal</h2>
+      <p id="simple-modal-description">
+        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+      </p>
+      <MyEditor />
+      {/* <SimpleModal /> */}
+    </div>
+  );
+
+  //Handling Modal open
+
+  const modalOpen = (id) => {
+    console.log(id);
+    setOpen(true);
+  };
+
+  //Handling Modal close
+  const modalClose = () => {
+    setOpen(false);
+  };
   console.log(window.page_props, "WINDOW");
   const smallReactangle = (id) => {
     console.log(id, "IIIDDD");
@@ -51,6 +111,8 @@ export default function ArtistGrid() {
   useEffect(() => {
     loadData();
   }, []);
+
+  // Loading Data from the Maddog API
   const loadData = async () => {
     const res = await fetch("https://intranet.maddogcasting.com/app3/sample", {
       method: "GET",
@@ -64,14 +126,20 @@ export default function ArtistGrid() {
   return (
     <>
       <TopBar onChangeBox={onChangeBox} />
-      {/* {BoxType === 1 && (
-        <Grid container spacing={3}>
-          {Data.map((item) => {
-            return <ArtistBox1 item={item} smallRectangle={smallReactangle} />;
-          })}
-        </Grid>
-      )}
-      {BoxType != 1 && <p>You have selected different {BoxType}</p>} */}
+      {/* <MyEditor /> */}
+      <div>
+        {/* <button type="button" onClick={handleOpen}>
+          Open Modal
+        </button> */}
+        <Modal
+          open={open}
+          onClose={modalClose}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          {body}
+        </Modal>
+      </div>
 
       {/* 6 per page 1 photo each */}
       {BoxType === 1 && (
@@ -86,6 +154,7 @@ export default function ArtistGrid() {
                 item={item}
                 smallRectangle={smallReactangle}
                 box_type={BoxType}
+                modalOpen={modalOpen}
               />
             );
           })}
