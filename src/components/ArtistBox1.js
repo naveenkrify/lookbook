@@ -37,9 +37,9 @@ export default function ArtistBox1({
     setAnchorEl(null);
     smallRectangle(id);
   };
-  const handleClose3 = (id, image) => {
+  const handleClose3 = (id, image, image_no) => {
     setAnchorEl(null);
-    modalOpen(id, image);
+    modalOpen(id, image, image_no);
   };
 
   //////////////////////////////END/////////////////////////////////////////
@@ -94,7 +94,7 @@ export default function ArtistBox1({
           <MenuItem onClick={handleClose}>Small Square</MenuItem>
           <MenuItem
             onClick={() => {
-              return handleClose3(item.artist_id, item.default_image);
+              return handleClose3(item.artist_id, item.default_image, 1);
             }}
           >
             Large Square

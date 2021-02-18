@@ -19,6 +19,8 @@ export default class MyEditor extends React.Component {
     disableCanvasRotation: false,
     isTransparent: false,
     backgroundColor: null,
+    artistid: this.props.artistID,
+    imageno: this.props.imageNo,
   };
 
   handleNewImage = (e) => {
@@ -42,7 +44,9 @@ export default class MyEditor extends React.Component {
   };
 
   handleSet = () => {
+    console.log(this.state.image, "state Image");
     const im = this.editor.getImage().toDataURL();
+    this.props.upadteImage(im);
     console.log(im);
   };
 
@@ -169,7 +173,7 @@ export default class MyEditor extends React.Component {
                 image={this.state.image}
                 className="editor-canvas"
                 disableCanvasRotation={this.state.disableCanvasRotation}
-                crossOrigin={"*"}
+                crossOrigin={"anonymous"}
               />
               {/* <br />
               New File:
