@@ -45,7 +45,7 @@ export default class MyEditor extends React.Component {
 
   handleSet = () => {
     console.log(this.state.image, "state Image");
-    const im = this.editor.getImage().toDataURL();
+    const im = this.editor.getImage();
     this.props.upadteImage(im);
     console.log(im);
   };
@@ -184,6 +184,7 @@ export default class MyEditor extends React.Component {
                 {...getInputProps()}
                 style={{ display: "initial" }}
               /> */}
+              crossOrigin={"anonymous"}
             </div>
           )}
         </Dropzone>

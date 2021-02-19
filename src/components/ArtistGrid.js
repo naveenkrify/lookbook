@@ -7,7 +7,6 @@ import {
   responsiveFontSizes,
   ThemeProvider,
 } from "@material-ui/core/styles";
-
 import { useState, useEffect } from "react";
 import ArtistBox1 from "./ArtistBox1";
 import ArtistBox2 from "./ArtistBox2";
@@ -66,9 +65,9 @@ export default function ArtistGrid() {
         return { ...item };
       }
     });
-    console.log(newData, "NEW DATA");
-    console.log(artistID, "present artist");
-    console.log(imageNo, "present image no");
+    // console.log(newData, "NEW DATA");
+    // console.log(artistID, "present artist");
+    // console.log(imageNo, "present image no");
     setData(newData);
     setOpen(false);
   };
@@ -144,7 +143,15 @@ export default function ArtistGrid() {
     });
     const res_ = await res.json();
     setData(res_);
-    console.log(res_);
+    const new_data = res_.map((item) => {
+      var arr = new Uint8Array(item.default_image);
+      var raw = String.fromCharCode.apply(null, arr);
+      // var b64 = base64.encode(raw);
+      var b64 = raw.toString("base64");
+      var dataURL = "data:image/png;base64," + b64;
+      return { ...item, default_image: dataURL };
+    });
+    console.log(new_data, "NEW DATA");
   };
   // setData(myobj);
   return (
