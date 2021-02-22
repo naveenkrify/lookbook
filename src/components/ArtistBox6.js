@@ -47,7 +47,7 @@ export default function ArtistBox6({ item, smallRectangle = (f) => f }) {
       sm={6}
       xs={6}
       md={6}
-      style={{ height: "600px" }}
+      style={{ height: "90vh" }}
     >
       <Grid
         item

@@ -48,7 +48,7 @@ export default function ArtistBox8({ item, smallRectangle = (f) => f }) {
       xs={12}
       md={12}
       style={{
-        height: "450px",
+        height: "70vh",
       }}
     >
       <Grid item container lg={5} sm={5} xs={5} md={5} style={{}}>
@@ -66,6 +66,34 @@ export default function ArtistBox8({ item, smallRectangle = (f) => f }) {
               justifyItems: "center",
             }}
           >
+            <IconButton
+              style={{ position: "absolute", zIndex: "2", marginRight: "15%" }}
+            >
+              <IoMdHammer
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={handleClick}
+              />
+            </IconButton>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>Small Square</MenuItem>
+              <MenuItem onClick={handleClose}>Large Square</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  return handleClose2(item.id);
+                }}
+              >
+                Small Rectangle
+              </MenuItem>
+              <MenuItem onClick={handleClose}>Large Rectangle</MenuItem>
+              <MenuItem onClick={handleClose}>Rotate 90degrees</MenuItem>
+            </Menu>
             <img
               src={item.default_image}
               style={{
@@ -78,6 +106,34 @@ export default function ArtistBox8({ item, smallRectangle = (f) => f }) {
             />
           </Grid>
           <Grid item container lg={6} sm={6} xs={6} md={6} style={{}}>
+            <IconButton
+              style={{ position: "absolute", zIndex: "2", marginRight: "15%" }}
+            >
+              <IoMdHammer
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={handleClick}
+              />
+            </IconButton>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>Small Square</MenuItem>
+              <MenuItem onClick={handleClose}>Large Square</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  return handleClose2(item.id);
+                }}
+              >
+                Small Rectangle
+              </MenuItem>
+              <MenuItem onClick={handleClose}>Large Rectangle</MenuItem>
+              <MenuItem onClick={handleClose}>Rotate 90degrees</MenuItem>
+            </Menu>
             <img
               src={item.default_image}
               style={{

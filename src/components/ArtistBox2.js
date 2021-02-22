@@ -47,7 +47,7 @@ export default function ArtistBox2({ item, smallRectangle = (f) => f }) {
         sm={6}
         xs={6}
         md={6}
-        style={{ height: "300px" }}
+        style={{ height: "45vh" }}
       >
         {/* inner full width */}
         {/* {console.log(col_sizes[box_type], "BOX TYPE2")} */}
@@ -64,8 +64,10 @@ export default function ArtistBox2({ item, smallRectangle = (f) => f }) {
             style={{
               position: "absolute",
               zIndex: "2",
-              marginTop: "15px",
-              marginLeft: "35px",
+              marginTop: "2%",
+              marginLeft: "3%",
+              height: "7%",
+              width: "5%",
             }}
           >
             <IoMdHammer
@@ -244,7 +246,10 @@ export default function ArtistBox2({ item, smallRectangle = (f) => f }) {
           sm={12}
           xs={12}
           md={12}
-          style={{ height: "10%", marginTop: "10px" }}
+          style={{
+            height: "10%",
+            marginTop: "3%",
+          }}
           justify="center"
           alignItems="center"
         >

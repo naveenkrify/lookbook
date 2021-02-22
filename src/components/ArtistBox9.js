@@ -44,7 +44,7 @@ export default function ArtistBox9({ item, smallRectangle = (f) => f }) {
       container
       direction="row"
       style={{
-        height: "600px",
+        height: "90vh",
       }}
     >
       <Grid item container lg={1} sm={1} xs={1} md={1}></Grid>
@@ -86,6 +86,34 @@ export default function ArtistBox9({ item, smallRectangle = (f) => f }) {
             }}
           >
             {/* Image 1 */}
+            <IconButton
+              style={{ position: "absolute", zIndex: "2", marginRight: "15%" }}
+            >
+              <IoMdHammer
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={handleClick}
+              />
+            </IconButton>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>Small Square</MenuItem>
+              <MenuItem onClick={handleClose}>Large Square</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  return handleClose2(item.id);
+                }}
+              >
+                Small Rectangle
+              </MenuItem>
+              <MenuItem onClick={handleClose}>Large Rectangle</MenuItem>
+              <MenuItem onClick={handleClose}>Rotate 90degrees</MenuItem>
+            </Menu>
 
             <img
               src={item.default_image}
@@ -110,6 +138,34 @@ export default function ArtistBox9({ item, smallRectangle = (f) => f }) {
               height: "100%",
             }}
           >
+            <IconButton
+              style={{ position: "absolute", zIndex: "2", marginRight: "15%" }}
+            >
+              <IoMdHammer
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={handleClick}
+              />
+            </IconButton>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>Small Square</MenuItem>
+              <MenuItem onClick={handleClose}>Large Square</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  return handleClose2(item.id);
+                }}
+              >
+                Small Rectangle
+              </MenuItem>
+              <MenuItem onClick={handleClose}>Large Rectangle</MenuItem>
+              <MenuItem onClick={handleClose}>Rotate 90degrees</MenuItem>
+            </Menu>
             {/* Image 2 */}
             <img
               src={item.default_image}
@@ -134,6 +190,34 @@ export default function ArtistBox9({ item, smallRectangle = (f) => f }) {
               height: "100%",
             }}
           >
+            <IconButton
+              style={{ position: "absolute", zIndex: "2", marginRight: "15%" }}
+            >
+              <IoMdHammer
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={handleClick}
+              />
+            </IconButton>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>Small Square</MenuItem>
+              <MenuItem onClick={handleClose}>Large Square</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  return handleClose2(item.id);
+                }}
+              >
+                Small Rectangle
+              </MenuItem>
+              <MenuItem onClick={handleClose}>Large Rectangle</MenuItem>
+              <MenuItem onClick={handleClose}>Rotate 90degrees</MenuItem>
+            </Menu>
             {/* Image 3 */}
             <img
               src={item.default_image}

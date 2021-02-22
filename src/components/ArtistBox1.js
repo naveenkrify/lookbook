@@ -56,8 +56,8 @@ export default function ArtistBox1({
       xs={4}
       md={4}
       style={{
-        height: "300px",
-
+        height: "50vh",
+        overflow: "auto",
         display: "flex",
         alignItems: "flex-start",
       }}
@@ -75,7 +75,9 @@ export default function ArtistBox1({
           style={{
             position: "absolute",
             zIndex: "2",
-            marginTop: "10px",
+            height: "7%",
+            width: "5%",
+            marginTop: "1.5%",
           }}
         >
           <IoMdHammer
@@ -272,7 +274,7 @@ export default function ArtistBox1({
         sm={12}
         xs={12}
         md={12}
-        style={{ height: "10%", marginTop: "10px" }}
+        style={{ height: "10%", marginTop: "2%", border: "1px solid green" }}
         justify="center"
         alignItems="center"
       >

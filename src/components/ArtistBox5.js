@@ -47,7 +47,7 @@ export default function ArtistBox5({ item, smallRectangle = (f) => f }) {
       sm={6}
       xs={6}
       md={6}
-      style={{ height: "550px" }}
+      style={{ height: "70vh" }}
     >
       <Grid
         item
@@ -63,7 +63,7 @@ export default function ArtistBox5({ item, smallRectangle = (f) => f }) {
             position: "absolute",
             zIndex: "2",
             marginLeft: "2%",
-            marginTop: "6%",
+            marginTop: "7%",
           }}
         >
           <IoMdHammer
@@ -232,7 +232,7 @@ export default function ArtistBox5({ item, smallRectangle = (f) => f }) {
         sm={12}
         xs={12}
         md={12}
-        style={{ height: "10%" }}
+        style={{ height: "12%" }}
         justify="center"
         alignItems="center"
       >
