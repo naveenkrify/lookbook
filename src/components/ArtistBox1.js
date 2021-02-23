@@ -1,5 +1,4 @@
 import Grid from "@material-ui/core/Grid";
-import { DriveEtaTwoTone } from "@material-ui/icons";
 import {
   createMuiTheme,
   responsiveFontSizes,
@@ -13,12 +12,11 @@ import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { useState } from "react";
-import { IoAddCircleOutline } from "react-icons/io5";
-
 export default function ArtistBox1({
   item,
   smallRectangle = (f) => f,
   modalOpen = (f) => f,
+  imageModalOpen = (f) => f,
 }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [size, setSize] = useState("100%");
@@ -40,6 +38,11 @@ export default function ArtistBox1({
   const handleClose3 = (id, image, image_no) => {
     setAnchorEl(null);
     modalOpen(id, image, image_no);
+  };
+  const handleClose4 = (id) => {
+    // console.log(id, "ID");
+    setAnchorEl(null);
+    imageModalOpen(id);
   };
 
   //////////////////////////////END/////////////////////////////////////////
@@ -93,7 +96,13 @@ export default function ArtistBox1({
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleClose}>Small Square</MenuItem>
+          <MenuItem
+            onClick={() => {
+              return handleClose4(item.artist_id);
+            }}
+          >
+            Small Square
+          </MenuItem>
           <MenuItem
             onClick={() => {
               return handleClose3(item.artist_id, item.default_image, 1);
@@ -274,7 +283,7 @@ export default function ArtistBox1({
         sm={12}
         xs={12}
         md={12}
-        style={{ height: "10%", marginTop: "2%", border: "1px solid green" }}
+        style={{ height: "10%", marginTop: "2%" }}
         justify="center"
         alignItems="center"
       >
