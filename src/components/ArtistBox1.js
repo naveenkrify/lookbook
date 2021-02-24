@@ -39,10 +39,10 @@ export default function ArtistBox1({
     setAnchorEl(null);
     modalOpen(id, image, image_no);
   };
-  const handleClose4 = (id) => {
+  const handleClose4 = (id, gridNO) => {
     // console.log(id, "ID");
     setAnchorEl(null);
-    imageModalOpen(id);
+    imageModalOpen(id, gridNO);
   };
 
   //////////////////////////////END/////////////////////////////////////////
@@ -98,7 +98,7 @@ export default function ArtistBox1({
         >
           <MenuItem
             onClick={() => {
-              return handleClose4(item.artist_id);
+              return handleClose4(item.artist_id, 1);
             }}
           >
             Small Square

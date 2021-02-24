@@ -68,6 +68,7 @@ export default function ArtistGrid() {
     });
     setData(newData);
     setOpen(false);
+    setImageSelect(false);
   };
 
   var img_url =
@@ -100,9 +101,10 @@ export default function ArtistGrid() {
   };
 
   //Handling Image select model open
-  const imageModalOpen = (id) => {
+  const imageModalOpen = (id, gridNO) => {
     console.log(id, "Artist ID");
     setArtistID(id);
+    setImageNo(gridNO);
     setImageSelect(true);
   };
 
@@ -114,7 +116,11 @@ export default function ArtistGrid() {
   //Images modal body
   const images_modal_body = (
     <div style={{ backgroundColor: "white", border: "1px solid black" }}>
-      <ImagesModal artistID={artistID} />
+      <ImagesModal
+        artistID={artistID}
+        gridNO={imageNo}
+        upadteImage={upadteImage}
+      />
     </div>
   );
   console.log(window.page_props, "WINDOW");
