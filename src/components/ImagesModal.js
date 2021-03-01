@@ -5,7 +5,6 @@ export default function ImagesModal({
   gridNO,
   upadteImage = (f) => f,
 }) {
-  console.log(artistID, "Artist ID from images Modal");
   const [Images, setImages] = useState(null);
   const loadData = async () => {
     const res = await fetch(
@@ -17,12 +16,13 @@ export default function ImagesModal({
     );
 
     const res_ = await res.json();
+
     setImages(res_.images);
   };
   useEffect(() => {
     loadData();
   }, []);
-  console.log(Images, "Images Length");
+  // console.log(Images, "Images Length");
 
   return (
     <>
@@ -53,12 +53,12 @@ export default function ImagesModal({
                   md={4}
                 >
                   <img
-                    src={attachment}
+                    src={attachment.image}
                     height={"100%"}
                     width={"100%"}
                     style={{ cursor: "pointer" }}
                     onClick={() => {
-                      return upadteImage(attachment);
+                      return upadteImage(attachment.image);
                     }}
                   />
                 </Grid>

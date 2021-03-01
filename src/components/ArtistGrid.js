@@ -24,6 +24,9 @@ import React from "react";
 import ImagesModal from "./ImagesModal";
 
 export default function ArtistGrid() {
+  const [bigData, setBigData] = useState([]);
+  const [bigDataNumber, setBigDataNumber] = useState(0);
+
   const useModalStyles = makeStyles((theme) => ({
     modal: {
       display: "flex",
@@ -58,17 +61,27 @@ export default function ArtistGrid() {
     },
   }));
   const classes = useStyles();
-  const upadteImage = (img) => {
-    const newData = Data.map((item) => {
+  const upadteImage = async (img) => {
+    const newData = await Data.map((item) => {
       if (item.artist_id === artistID) {
-        return { ...item, default_image: img };
+        var temp_name = "image" + imageNo.toString();
+        var temp_obj = { ...item };
+        temp_obj[temp_name] = img;
+
+        return { ...temp_obj };
       } else {
         return { ...item };
       }
     });
     setData(newData);
+
     setOpen(false);
     setImageSelect(false);
+    // var temp_num = parseInt(bigDataNumber) + 1;
+    setBigDataNumber((prev) => prev + 1);
+    // setBigData((prev) => prev.push([newData]));
+    await setBigData(newData, () => console.log(bigData, "BIG DATA"));
+    console.log(bigDataNumber, "BIG DATA NUMBER");
   };
 
   var img_url =
@@ -88,7 +101,7 @@ export default function ArtistGrid() {
   //Handling Modal open
 
   const modalOpen = (id, image, image_no) => {
-    console.log(image, "IMAGE");
+    // console.log(image, "IMAGE");
     setOpen(true);
     setArtistID(id);
     setImageNo(image_no);
@@ -102,7 +115,7 @@ export default function ArtistGrid() {
 
   //Handling Image select model open
   const imageModalOpen = (id, gridNO) => {
-    console.log(id, "Artist ID");
+    // console.log(id, "Artist ID");
     setArtistID(id);
     setImageNo(gridNO);
     setImageSelect(true);
@@ -123,7 +136,7 @@ export default function ArtistGrid() {
       />
     </div>
   );
-  console.log(window.page_props, "WINDOW");
+  // console.log(window.page_props, "WINDOW");
   const smallReactangle = (id) => {
     const newData = Data.map((item) => {
       if (item.id === id) {
@@ -162,18 +175,85 @@ export default function ArtistGrid() {
       headers: headers,
     });
     const res_ = await res.json();
-    setData(res_);
+
     const new_data = res_.map((item) => {
       var arr = new Uint8Array(item.default_image);
       var raw = String.fromCharCode.apply(null, arr);
       // var b64 = base64.encode(raw);
       var b64 = raw.toString("base64");
       var dataURL = "data:image/png;base64," + b64;
-      return { ...item, default_image: dataURL };
+      return getImages(item.artist_id).then((data) => {
+        const [image1, image2, image3, image4] = data;
+        // console.log(image1, "IMAGE1", item.artist_id);
+        // console.log(image2, "IMAGE2", item.artist_id);
+        // console.log(image3, "IMAGE3", item.artist_id);
+        // console.log(image4, "IMAGE4", item.artist_id);
+
+        return {
+          ...item,
+          image1: image1,
+          image2: image2,
+          image3: image3,
+          image4: image4,
+        };
+      });
+      // console.log(image1, "IMAGE1");
+      // console.log(image2, "IMAGE2");
+      // console.log(image3, "IMAGE3");
+      // console.log(image4, "IMAGE4");
+      // console.log(getImages(item.artist_id), "ARTIST IMAGES");
     });
-    console.log(new_data, "NEW DATA");
+    Promise.all(new_data).then((data) => {
+      setData(data);
+      // setBigDataNumber(bigDataNumber + 1);
+      // setBigData(bigData.push([data]));
+      // console.log(data, "NEW DATA");
+      // console.log(bigData, "BIG DATA");
+    });
   };
-  // setData(myobj);
+
+  const getImages = async (artist_id) => {
+    const res = await fetch(
+      "https://intranet.maddogcasting.com/app3/artist_images/" +
+        artist_id.toString(),
+      {
+        method: "GET",
+        headers: headers,
+      }
+    );
+    const res_ = await res.json();
+    var image1 = "";
+    var image2 = "";
+    var image3 = "";
+    var image4 = "";
+
+    await res_.images.every((img) => {
+      if (img.tag_id == 1) {
+        image1 = img.image;
+        return false;
+      }
+      return true;
+    });
+
+    await res_.images.every((img) => {
+      if (img.tag_id == 2) {
+        image2 = img.image;
+        return false;
+      }
+      return true;
+    });
+
+    await res_.images.every((img) => {
+      if (img.tag_id == 52) {
+        image3 = img.image;
+        return false;
+      }
+      return true;
+    });
+
+    return [image1, image2, image3, image4];
+  };
+
   return (
     <>
       <TopBar onChangeBox={onChangeBox} />

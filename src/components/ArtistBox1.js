@@ -101,24 +101,15 @@ export default function ArtistBox1({
               return handleClose4(item.artist_id, 1);
             }}
           >
-            Small Square
+            Add New Image
           </MenuItem>
           <MenuItem
             onClick={() => {
-              return handleClose3(item.artist_id, item.default_image, 1);
+              return handleClose3(item.artist_id, item.image1, 1);
             }}
           >
-            Large Square
+            Crop Image
           </MenuItem>
-          <MenuItem
-            onClick={() => {
-              return handleClose2(item.id);
-            }}
-          >
-            Small Rectangle
-          </MenuItem>
-          <MenuItem onClick={handleClose}>Large Rectangle</MenuItem>
-          <MenuItem onClick={handleClose}>Rotate 90degrees</MenuItem>
         </Menu>
 
         <Grid
@@ -144,7 +135,7 @@ export default function ArtistBox1({
             }}
           /> */}
           <img
-            src={item.default_image}
+            src={item.image1}
             style={{
               marginTop: "3%",
               border: "2px solid black",
