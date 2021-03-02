@@ -12,7 +12,11 @@ import React from "react";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import NestedMenuItem from "material-ui-nested-menu-item";
-export default function TopBar({ onChangeBox = (f) => f }) {
+export default function TopBar({
+  onChangeBox = (f) => f,
+  handleUndo = (f) => f,
+  handleSave = (f) => f,
+}) {
   //Handlig Menu
   const [menuPosition, setMenuPosition] = React.useState(null);
   const [savePosition, setSavePosition] = React.useState(null);
@@ -30,6 +34,7 @@ export default function TopBar({ onChangeBox = (f) => f }) {
       top: event.pageY,
       left: event.pageX,
     });
+    handleSave();
   };
   const handleItemClick = (event) => {
     setMenuPosition(null);
@@ -52,7 +57,10 @@ export default function TopBar({ onChangeBox = (f) => f }) {
       >
         <Grid item lg={10} sm={10} xs={10} md={10}>
           <IconButton>
-            <BsFillArchiveFill style={{ color: "#ff1552" }} />
+            <BsFillArchiveFill
+              style={{ color: "green" }}
+              onClick={() => handleUndo()}
+            />
           </IconButton>
         </Grid>
 
@@ -144,7 +152,7 @@ export default function TopBar({ onChangeBox = (f) => f }) {
                 aria-haspopup="true"
                 onClick={handleSaveClick}
               />
-              <Menu
+              {/* <Menu
                 id="save-menu"
                 anchorReference="anchorPosition"
                 anchorPosition={savePosition}
@@ -153,7 +161,7 @@ export default function TopBar({ onChangeBox = (f) => f }) {
               >
                 <MenuItem onClick={handleItemClick}>Save</MenuItem>
                 <MenuItem onClick={handleItemClick}>Save</MenuItem>
-              </Menu>
+              </Menu> */}
             </IconButton>
           </Grid>
           <Grid item lg={3} sm={3} xs={3} md={3}>

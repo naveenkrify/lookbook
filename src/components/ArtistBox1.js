@@ -20,9 +20,8 @@ export default function ArtistBox1({
 }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [size, setSize] = useState("100%");
-  console.log(item, "ITEM");
+
   const handleClick = (event) => {
-    // console.log(event);
     setAnchorEl(event.currentTarget);
   };
 
@@ -31,7 +30,6 @@ export default function ArtistBox1({
   };
 
   const handleClose2 = (id) => {
-    // console.log(id, "ID");
     setAnchorEl(null);
     smallRectangle(id);
   };
@@ -40,7 +38,6 @@ export default function ArtistBox1({
     modalOpen(id, image, image_no);
   };
   const handleClose4 = (id, gridNO) => {
-    // console.log(id, "ID");
     setAnchorEl(null);
     imageModalOpen(id, gridNO);
   };

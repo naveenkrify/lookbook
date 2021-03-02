@@ -79,9 +79,7 @@ export default function ArtistGrid() {
     setImageSelect(false);
     // var temp_num = parseInt(bigDataNumber) + 1;
     setBigDataNumber((prev) => prev + 1);
-    // setBigData((prev) => prev.push([newData]));
-    await setBigData(newData, () => console.log(bigData, "BIG DATA"));
-    console.log(bigDataNumber, "BIG DATA NUMBER");
+    setBigData((prev) => [...prev, [newData]]);
   };
 
   var img_url =
@@ -101,7 +99,6 @@ export default function ArtistGrid() {
   //Handling Modal open
 
   const modalOpen = (id, image, image_no) => {
-    // console.log(image, "IMAGE");
     setOpen(true);
     setArtistID(id);
     setImageNo(image_no);
@@ -115,7 +112,6 @@ export default function ArtistGrid() {
 
   //Handling Image select model open
   const imageModalOpen = (id, gridNO) => {
-    // console.log(id, "Artist ID");
     setArtistID(id);
     setImageNo(gridNO);
     setImageSelect(true);
@@ -136,7 +132,7 @@ export default function ArtistGrid() {
       />
     </div>
   );
-  // console.log(window.page_props, "WINDOW");
+
   const smallReactangle = (id) => {
     const newData = Data.map((item) => {
       if (item.id === id) {
@@ -165,8 +161,11 @@ export default function ArtistGrid() {
   headers.append("Access-Control-Allow-Credentials", "true");
   headers.append("GET", "POST", "OPTIONS");
   useEffect(() => {
-    loadData();
-  }, []);
+    if (bigDataNumber === 0) {
+      loadData();
+    }
+    // console.log(bigData, "BIG DATA");
+  }, [bigData]);
 
   // Loading Data from the Maddog API
   const loadData = async () => {
@@ -184,10 +183,6 @@ export default function ArtistGrid() {
       var dataURL = "data:image/png;base64," + b64;
       return getImages(item.artist_id).then((data) => {
         const [image1, image2, image3, image4] = data;
-        // console.log(image1, "IMAGE1", item.artist_id);
-        // console.log(image2, "IMAGE2", item.artist_id);
-        // console.log(image3, "IMAGE3", item.artist_id);
-        // console.log(image4, "IMAGE4", item.artist_id);
 
         return {
           ...item,
@@ -197,18 +192,9 @@ export default function ArtistGrid() {
           image4: image4,
         };
       });
-      // console.log(image1, "IMAGE1");
-      // console.log(image2, "IMAGE2");
-      // console.log(image3, "IMAGE3");
-      // console.log(image4, "IMAGE4");
-      // console.log(getImages(item.artist_id), "ARTIST IMAGES");
     });
     Promise.all(new_data).then((data) => {
       setData(data);
-      // setBigDataNumber(bigDataNumber + 1);
-      // setBigData(bigData.push([data]));
-      // console.log(data, "NEW DATA");
-      // console.log(bigData, "BIG DATA");
     });
   };
 
@@ -254,9 +240,44 @@ export default function ArtistGrid() {
     return [image1, image2, image3, image4];
   };
 
+  //handling UNDO
+  const handleUndo = () => {
+    if (bigDataNumber != 0) {
+      var temp_no = bigDataNumber;
+      var temp_data = [...bigData];
+      console.log(temp_data);
+      setBigDataNumber((prev) => prev - 1);
+      setData(temp_data[temp_no - 2][0]);
+    }
+  };
+
+  const handleSave = () => {
+    var fdata = new FormData();
+    fdata.append("body", JSON.stringify(Data));
+    fetch("https://mdapi.maddogcasting.com/sixperpage/", {
+      body: fdata,
+      method: "POST",
+    })
+      .then((res) => res.blob())
+      .then((blob) => {
+        var url = window.URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        window.open(url, "_blank");
+        // a.href = url;
+        // a.download = "filename.pdf";
+        // document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
+        // a.click();
+        // a.remove();
+      });
+  };
+
   return (
     <>
-      <TopBar onChangeBox={onChangeBox} />
+      <TopBar
+        onChangeBox={onChangeBox}
+        handleUndo={handleUndo}
+        handleSave={handleSave}
+      />
       {/* Image editor Modal */}
       <div>
         <Modal
